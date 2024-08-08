@@ -15,7 +15,7 @@ This solution assumes a standard WHM/cPanel setup (using Apache, PHP managed by 
 
 
 
-# A - Server prep
+# A - Initial server prep
 
 Before installing, make sure you have set up the following with cPanel:
 
@@ -54,8 +54,59 @@ chmod +x deploy.sh
 
 
 
+# C - Installation - Server (as SSH user, not root)
 
-# C - Usage
+1 - Configure git (if needed)
+
+- `touch /home/xxxx/.gitconfig`
+
+```
+[user]
+	name = xxxx
+	email = xxxxxxxxxx@xxxxxx.xxx
+[pull]
+	rebase = false
+```
+
+
+
+2 - Generate new ssh keys for GitHub / Bitbucket (if needed)
+
+- `ssh-keygen -t ed25519 -C "xxxxxxxxxx@xxxxxx.xxx"`
+- `cat /home/xxxx/.ssh/id_ed25519.pub`
+
+- copy & add to https://github.com/settings/ssh/new
+	- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+- for bitbucket add keys here - https://bitbucket.org/account/settings/ssh-keys/
+	- https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/
+
+
+OR - copy the key from another account
+- `cp /home/yyyy/.ssh/id_ed25519.pub /home/xxxx/.ssh`
+
+
+3 - Connect repo to site & do initial pull
+* (git clone [repo] . doesn't work in non-empty dir, whm creates .well-known, cgi-bin, and .htaccess)
+
+- `cd /home/xxxx/public_html`
+- `git init`
+- `git remote add origin git@github.com:xxxx/xxxx.git`
+- `git pull`
+	- (or)
+	- `git fetch --all`
+	- `git reset --hard origin/master`
+- (add RSA fingerprint and mark directory as safe...confirm whatever initial stuff it makes you do)
+
+
+
+
+
+
+
+
+
+# D - Usage
 
 If everything has been set up correctly, you should be able to run the deployment script locally and watch as the process unfolds:
 ```
