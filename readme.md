@@ -6,9 +6,7 @@
 
 # Overview
 
-These are installation instructions and scripts for deploying a STEREO application on a WHM-based VPS via rsync.
-
-The script will run STEREO's build process (`npm run build`), then use rsync to add new/updated files, delete removed files (keeping the default WHM/CP & SSL files), and set permissions on the added files (644) & directories (755) on the VPS.
+These are installation instructions and scripts for deploying a STEREO application on a WHM-based VPS via Git pull via SSH.
 
 This solution assumes a standard WHM/cPanel setup (using Apache, PHP managed by EA/MultiPHP, etc), and is specifically intended for MY servers. These concepts _could_ be adapted for general use by other stacks, but YMMV if you're not me.
 
