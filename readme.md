@@ -42,7 +42,7 @@ Before installing, make sure you have set up the following with cPanel:
 
 1 - In the root of your STEREO application, add the local deploy script (and add to .gitignore):
 ```
-curl https://raw.githubusercontent.com/jyoungblood/0x00-stereo-deploy/master/deploy.sh -o deploy.sh && echo "/deploy.sh" >> .gitignore
+curl https://raw.githubusercontent.com/jyoungblood/0x00-stereo-deploy/master/deploy.sh -o deploy.sh && echo "/deploy.sh\n" >> .gitignore
 ```
 
 2 - Edit `deploy.sh` to add your SSH login info, STEREO site path, and deployment path. After editing, make sure the script is executable:
