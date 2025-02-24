@@ -16,7 +16,7 @@ DEPLOYMENT_PATH="/home/xx/public_html"
 # rsync version - will delete files/folders on server that aren't local (unless) specified
   # using .gitignore is more sustainable but git deploy is more involved setup
 # add '-n' for dry run
-# rsync -avhHP --delete-after --chmod=Du=rwx,Dg=rx,D=x,Fu=rwx,Fg=r,Fo=r --exclude '.env' --exclude '.well-known' --exclude 'cgi-bin' $SITE_PATH -e "ssh -p $SSH_PORT" $SSH_USER@$SSH_SERVER:$DEPLOYMENT_PATH
+# rsync -avhHP --delete-after --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r --exclude '.env' --exclude '.well-known' --exclude 'cgi-bin' $SITE_PATH -e "ssh -p $SSH_PORT" $SSH_USER@$SSH_SERVER:$DEPLOYMENT_PATH
 
 
 
